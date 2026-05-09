@@ -1,7 +1,15 @@
 import faulthandler
 faulthandler.enable()
 import os
+import sys
+
+# Set critical environment variables before any heavy imports
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+os.environ["TF_FORCE_GPU_ALLOW_GROWTH"] = "true"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OMP_NUM_THREADS"] = "1"
 
 import streamlit as st
 import traceback

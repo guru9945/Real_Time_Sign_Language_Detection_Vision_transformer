@@ -1,4 +1,11 @@
 libgl1
 libsm6
 libxext6
+libglib2.0-0
+libgthread-2.0-0
 libglib2.0-dev
+libblas-dev
+liblapack-dev
+libatlas-base-dev
+gfortran
+build-essential
