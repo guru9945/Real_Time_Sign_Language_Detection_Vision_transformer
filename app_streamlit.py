@@ -37,91 +37,13 @@ from app import (
 )
 
 # Initialize Streamlit Page
-st.set_page_config(page_title="Hand Gesture Recognition", layout="wide", page_icon="🖖")
+st.set_page_config(page_title="Hand Gesture Recognition", layout="wide")
+st.title("Hand Gesture Recognition Web App 🖖")
 
-page_style = """
-<style>
-body {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-}
-.css-18e3th9 {
-    background-color: transparent;
-}
-.css-1outpf7 {
-    background-color: rgba(15, 23, 42, 0.92);
-    border: 1px solid rgba(148, 163, 184, 0.16);
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.35);
-}
-.section-heading h1 {
-    margin-bottom: 0.25rem;
-    color: #f8fafc;
-}
-.section-heading p {
-    margin-top: 0;
-    color: #cbd5e1;
-    font-size: 1.05rem;
-}
-.card {
-    background: rgba(15, 23, 42, 0.95);
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    border-radius: 18px;
-    padding: 1.35rem;
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
-}
-.card h3 {
-    color: #f8fafc;
-    margin-bottom: 0.75rem;
-}
-.card p {
-    color: #cbd5e1;
-    margin: 0;
-}
-.footer {
-    position: fixed;
-    left: 1rem;
-    bottom: 1rem;
-    color: #94a3b8;
-    font-size: 0.9rem;
-    z-index: 999;
-}
-</style>
-"""
-
-st.markdown(page_style, unsafe_allow_html=True)
-
-st.markdown(
-    """
-<div class='section-heading'>
-  <h1>Hand Gesture Recognition Web App</h1>
-  <p>Real-time hand sign and finger gesture detection directly from your webcam with a polished browser UI.</p>
-</div>
-""",
-    unsafe_allow_html=True,
-)
-
-intro_col1, intro_col2 = st.columns([3, 1])
-with intro_col1:
-    st.markdown(
-        """
-        <div class='card'>
-            <h3>Overview</h3>
-            <p>Capture webcam video, detect hand landmarks using MediaPipe, and classify gestures in real-time with a lightweight model.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-with intro_col2:
-    st.markdown(
-        """
-        <div class='card'>
-            <h3>Built for Deployment</h3>
-            <p>Designed to run in the browser with minimal latency and a clean user experience.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-st.markdown("---")
+st.markdown("""
+This web app recognizes hand signs and finger gestures in real-time directly from your webcam.
+It uses **MediaPipe** for hand tracking and a custom Neural Network for gesture classification.
+""")
 
 # Load Models
 @st.cache_resource
@@ -218,16 +140,9 @@ st.markdown("---")
 
 st.markdown(
     """
-    <div class='card'>
-        <h3>How to use</h3>
-        <ul>
-            <li>Allow webcam access and show your hand to the camera.</li>
-            <li>The app recognizes static signs such as Open Hand, Close Hand, and Pointing.</li>
-            <li>It also tracks finger motion and detects dynamic gestures like Clockwise and Counterclockwise.</li>
-        </ul>
-    </div>
-    """,
-    unsafe_allow_html=True,
+**How to use:**
+- Show your hand to the camera.
+- The app recognizes static signs like Open Hand, Close Hand, and Pointing.
+- It also traces your index finger's path and recognizes dynamic gestures like Clockwise or Counterclockwise motion.
+"""
 )
-
-st.markdown('<div class="footer">Created by Gururamdas T P</div>', unsafe_allow_html=True)
