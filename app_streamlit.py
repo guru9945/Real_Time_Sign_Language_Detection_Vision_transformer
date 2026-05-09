@@ -114,15 +114,16 @@ class HandGestureProcessor:
 st.markdown("### Live Webcam Feed")
 st.markdown("Please grant webcam permissions when prompted. It might take a few seconds for the models to load.")
 
+processor = HandGestureProcessor()
+
 webrtc_streamer(
     key="hand-gesture",
     mode=WebRtcMode.SENDRECV,
-    video_processor_factory=HandGestureProcessor,
+    video_frame_callback=processor.recv,
     rtc_configuration=RTCConfiguration(
         {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
     ),
     media_stream_constraints={"video": True, "audio": False},
-    async_processing=True,
 )
 
 st.markdown("---")
