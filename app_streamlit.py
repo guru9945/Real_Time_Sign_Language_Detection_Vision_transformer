@@ -3,6 +3,9 @@ faulthandler.enable()
 import os
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
 
+import streamlit as st
+import traceback
+
 import cv2 as cv
 import numpy as np
 import mediapipe as mp
@@ -11,7 +14,6 @@ import copy
 import csv
 import av
 
-import streamlit as st
 from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 
 from model import KeyPointClassifier, PointHistoryClassifier, ViTClassifier
