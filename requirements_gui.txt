@@ -1,0 +1,23 @@
+# Hand Gesture Recognition GUI - Requirements
+# Install all dependencies with: pip install -r requirements_gui.txt
+
+# Core libraries for GUI and hand gesture recognition
+mediapipe>=0.10.0             # Hand landmark detection (MediaPipe)
+opencv-python>=3.4.2          # Computer vision and image processing
+tensorflow>=2.10.0            # TensorFlow and TFLite runtime
+numpy>=1.19.0                 # Numerical computing and array operations
+pillow>=8.0.0                 # Python Imaging Library for image handling
+
+# Note: tkinter is built-in with Python, no need to install separately
+# If tkinter is missing on Linux/macOS, see INSTALLATION_GUIDE.md
+
+# Optional dependencies for development/analysis
+# Uncomment if needed:
+
+# jupyter>=1.0.0              # Jupyter notebooks
+# scikit-learn>=0.23.2        # ML metrics and utilities
+# matplotlib>=3.3.2           # Plotting and visualization
+# pandas>=1.1.0              # Data analysis
+
+# GPU acceleration (optional, uncomment for NVIDIA CUDA support):
+# tensorflow[and-cuda]>=2.3.0 # TensorFlow with CUDA support

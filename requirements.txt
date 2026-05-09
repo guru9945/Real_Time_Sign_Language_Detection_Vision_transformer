@@ -1,0 +1,7 @@
+mediapipe>=0.10.0
+opencv-python-headless>=4.5.3.56
+tensorflow-cpu>=2.10.0
+numpy>=1.19.0
+streamlit>=1.20.0
+streamlit-webrtc>=0.45.0
+av>=10.0.0

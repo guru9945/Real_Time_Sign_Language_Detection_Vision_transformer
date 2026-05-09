@@ -1,0 +1,37 @@
+# Core Dependencies
+tensorflow>=2.10.0,<3.0.0
+opencv-python>=4.6.0
+mediapipe>=0.8.11
+numpy>=1.21.0
+scikit-learn>=1.0.0
+pillow>=9.0.0
+
+# GUI (optional, for desktop deployment)
+PyQt5>=5.15.0
+
+# Web Framework (optional, for web deployment)
+flask>=2.3.0
+flask-cors>=4.0.0
+gunicorn>=21.0.0
+werkzeug>=2.3.0
+
+# Database (optional, for data persistence)
+sqlalchemy>=2.0.0
+flask-sqlalchemy>=3.0.0
+
+# Deployment Tools (optional)
+pyinstaller>=5.0.0
+docker>=6.0.0
+
+# Performance Monitoring (optional)
+psutil>=5.9.0
+py-cpuinfo>=9.0.0
+
+# Logging and Monitoring (optional)
+python-dotenv>=1.0.0
+requests>=2.28.0
+
+# Development (optional)
+jupyterlab>=3.5.0
+matplotlib>=3.5.0
+pandas>=1.5.0
