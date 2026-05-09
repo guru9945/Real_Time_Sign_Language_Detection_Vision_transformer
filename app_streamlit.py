@@ -1,3 +1,8 @@
+import faulthandler
+faulthandler.enable()
+import os
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+
 import cv2 as cv
 import numpy as np
 import mediapipe as mp
