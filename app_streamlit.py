@@ -12,7 +12,7 @@ import csv
 import av
 
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, RTCConfiguration, WebRtcMode
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 
 from model import KeyPointClassifier, PointHistoryClassifier, ViTClassifier
 from app import (
@@ -60,7 +60,7 @@ hands, keypoint_classifier, point_history_classifier, keypoint_classifier_labels
 # State variables for tracking
 history_length = 16
 
-class HandGestureProcessor(VideoProcessorBase):
+class HandGestureProcessor:
     def __init__(self):
         self.point_history = deque(maxlen=history_length)
         self.finger_gesture_history = deque(maxlen=history_length)
