@@ -1,6 +1,6 @@
 # Real-Time Sign Language Recognition Using Pose Estimation and Vision Transformer
 
-This repository contains a real-time sign language and hand gesture recognition system. It utilizes **MediaPipe** for accurate hand pose/keypoint estimation and a custom **Vision Transformer (ViT)** and **MLP** for classification. 
+This repository contains a real-time sign language and hand gesture recognition system. It utilizes **MediaPipe** for accurate hand pose/keypoint estimation and a custom **Vision Transformer (ViT)** and **MLP** for classification Guru. 
 
 The project now features two ways to run the application:
 1. **Local Desktop GUI:** Runs via Python and OpenCV (`app.py` or `gui_app.py`).
