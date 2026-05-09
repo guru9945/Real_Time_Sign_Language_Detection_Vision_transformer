@@ -20,8 +20,15 @@ except ImportError:
     except ImportError:
         tf = None
 
-from tensorflow import keras
-from tensorflow.keras import layers
+# Import keras only if tensorflow is available
+try:
+    from tensorflow import keras
+    from tensorflow.keras import layers
+    HAS_KERAS = True
+except ImportError:
+    HAS_KERAS = False
+    keras = None
+    layers = None
 
 
 class ViTClassifier(object):
@@ -65,8 +72,8 @@ class ViTClassifier(object):
             self.output_details = self.interpreter.get_output_details()
             self.use_tflite = True
         elif os.path.exists(self.model_path):
-            if tf is None:
-                raise ImportError("TensorFlow required to load .h5 models")
+            if not HAS_KERAS:
+                raise ImportError("TensorFlow required to load .h5 models. Install tensorflow or use .tflite model.")
             self.model = keras.models.load_model(self.model_path)
             self.use_tflite = False
         else:

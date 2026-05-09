@@ -24,7 +24,7 @@ import av
 
 from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 
-from model import KeyPointClassifier, PointHistoryClassifier, ViTClassifier
+from model import KeyPointClassifier, PointHistoryClassifier
 from app import (
     calc_bounding_rect,
     calc_landmark_list,
