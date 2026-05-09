@@ -8,7 +8,18 @@ for sign language detection using pose estimation.
 
 import os
 import numpy as np
-import tensorflow as tf
+
+# Try to use tflite-runtime first, fall back to tensorflow
+try:
+    from tflite_runtime.interpreter import Interpreter as TFLiteInterpreter
+    HAS_TFLITE_RUNTIME = True
+except ImportError:
+    HAS_TFLITE_RUNTIME = False
+    try:
+        import tensorflow as tf
+    except ImportError:
+        tf = None
+
 from tensorflow import keras
 from tensorflow.keras import layers
 
@@ -40,13 +51,22 @@ class ViTClassifier(object):
         self.tflite_path = model_path.replace('.h5', '.tflite')
         
         if os.path.exists(self.tflite_path):
-            self.interpreter = tf.lite.Interpreter(model_path=self.tflite_path,
-                                                   num_threads=num_threads)
+            if HAS_TFLITE_RUNTIME:
+                self.interpreter = TFLiteInterpreter(model_path=self.tflite_path,
+                                                     num_threads=num_threads)
+            elif tf is not None:
+                self.interpreter = tf.lite.Interpreter(model_path=self.tflite_path,
+                                                       num_threads=num_threads)
+            else:
+                raise ImportError("Neither tflite-runtime nor tensorflow is available")
+            
             self.interpreter.allocate_tensors()
             self.input_details = self.interpreter.get_input_details()
             self.output_details = self.interpreter.get_output_details()
             self.use_tflite = True
         elif os.path.exists(self.model_path):
+            if tf is None:
+                raise ImportError("TensorFlow required to load .h5 models")
             self.model = keras.models.load_model(self.model_path)
             self.use_tflite = False
         else:

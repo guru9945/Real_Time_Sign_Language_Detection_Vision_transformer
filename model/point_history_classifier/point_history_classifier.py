@@ -1,7 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import numpy as np
-import tensorflow as tf
+try:
+    from tflite_runtime.interpreter import Interpreter
+except ImportError:
+    # Fallback to tensorflow if tflite_runtime is not available
+    import tensorflow as tf
+    class Interpreter:
+        def __init__(self, model_path, num_threads=1):
+            self._interpreter = tf.lite.Interpreter(model_path=model_path, num_threads=num_threads)
+        def allocate_tensors(self):
+            return self._interpreter.allocate_tensors()
+        def get_input_details(self):
+            return self._interpreter.get_input_details()
+        def get_output_details(self):
+            return self._interpreter.get_output_details()
+        def set_tensor(self, index, data):
+            return self._interpreter.set_tensor(index, data)
+        def invoke(self):
+            return self._interpreter.invoke()
+        def get_tensor(self, index):
+            return self._interpreter.get_tensor(index)
 
 
 class PointHistoryClassifier(object):
@@ -12,8 +31,8 @@ class PointHistoryClassifier(object):
         invalid_value=0,
         num_threads=1,
     ):
-        self.interpreter = tf.lite.Interpreter(model_path=model_path,
-                                               num_threads=num_threads)
+        self.interpreter = Interpreter(model_path=model_path,
+                                       num_threads=num_threads)
 
         self.interpreter.allocate_tensors()
         self.input_details = self.interpreter.get_input_details()
